@@ -1,4 +1,4 @@
-//Hola sebas, eueotnurseo
+//Hola sebas, como estas?
 // Hola david
 
 #define A 2
