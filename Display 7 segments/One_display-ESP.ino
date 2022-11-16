@@ -1,5 +1,3 @@
-# define push_button 23
-
 #define A 2
 #define B 4
 #define C 5
@@ -8,11 +6,12 @@
 #define F 21
 #define G 22
 
-int display_left[] = {A, B, C, D, E, F, G};
-int btn_cnt = 1;
-int units = -1, tens = 0;
+# define push_button 23
 
-void imp0(int display[])
+int display[] = {A, B, C, D, E, F, G};
+int cnt = -1;
+
+void print0(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], LOW);
@@ -23,7 +22,7 @@ void imp0(int display[])
     digitalWrite(display[6], HIGH);
 }
 
-void imp1(int display[])
+void print1(int display[])
 {
     digitalWrite(display[0], HIGH);
     digitalWrite(display[1], LOW);
@@ -34,7 +33,7 @@ void imp1(int display[])
     digitalWrite(display[6], HIGH);
 }
 
-void imp2(int display[])
+void print2(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], LOW);
@@ -44,7 +43,7 @@ void imp2(int display[])
     digitalWrite(display[5], HIGH);
     digitalWrite(display[6], LOW);
 }
-void imp3(int display[])
+void print3(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], LOW);
@@ -55,7 +54,7 @@ void imp3(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void imp4(int display[])
+void print4(int display[])
 {
     digitalWrite(display[0], HIGH);
     digitalWrite(display[1], LOW);
@@ -66,7 +65,7 @@ void imp4(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void imp5(int display[])
+void print5(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], HIGH);
@@ -77,7 +76,7 @@ void imp5(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void imp6(int display[])
+void print6(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], HIGH);
@@ -88,7 +87,7 @@ void imp6(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void imp7(int display[])
+void print7(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], LOW);
@@ -99,7 +98,7 @@ void imp7(int display[])
     digitalWrite(display[6], HIGH);
 }
 
-void imp8(int display[])
+void print8(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], LOW);
@@ -110,7 +109,7 @@ void imp8(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void imp9(int display[])
+void print9(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], LOW);
@@ -121,7 +120,7 @@ void imp9(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void impA(int display[])
+void printA(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], LOW);
@@ -132,7 +131,7 @@ void impA(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void impB(int display[])
+void printB(int display[])
 {
     digitalWrite(display[0], HIGH);
     digitalWrite(display[1], HIGH);
@@ -143,7 +142,7 @@ void impB(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void impC(int display[])
+void printC(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], HIGH);
@@ -154,7 +153,7 @@ void impC(int display[])
     digitalWrite(display[6], HIGH);
 }
 
-void impD(int display[])
+void printD(int display[])
 {
     digitalWrite(display[0], HIGH);
     digitalWrite(display[1], LOW);
@@ -165,7 +164,7 @@ void impD(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void impE(int display[])
+void printE(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], HIGH);
@@ -176,7 +175,7 @@ void impE(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void impF(int display[])
+void printF(int display[])
 {
     digitalWrite(display[0], LOW);
     digitalWrite(display[1], HIGH);
@@ -187,33 +186,32 @@ void impF(int display[])
     digitalWrite(display[6], LOW);
 }
 
-void imprimirNUM(int num, int display[]){
+void printNum(int num, int display[]){
     if (num == 0)
-        imp0(display);
+        print0(display);
     else if (num == 1)
-        imp1(display);
+        print1(display);
     else if (num == 2)
-        imp2(display);
+        print2(display);
     else if (num == 3)
-        imp3(display);
+        print3(display);
     else if (num == 4)
-        imp4(display);
+        print4(display);
     else if (num == 5)
-        imp5(display);
+        print5(display);
     else if (num == 6)
-        imp6(display);
+        print6(display);
     else if (num == 7)
-        imp7(display);
+        print7(display);
     else if (num == 8)
-        imp8(display);
+        print8(display);
     else if (num == 9)
-        imp9(display);
+        print9(display);
 }
 
 void btnPushed (void)
 {
-    Serial.println(btn_cnt);
-    btn_cnt++;
+    cnt = -1;
 }
 
 void setup()
@@ -229,22 +227,14 @@ void setup()
     pinMode(push_button,INPUT);
   
     Serial.begin(9600);
-  
-    // attachInterrupt(digitalPinToInterrupt(2), resetear, RISING);
-    // attachInterrupt(digitalPinToInterrupt(3), countSerial, RISING);
 }
 
 void loop(){
-    units++;
-    if (units == 10)
-    {
-        tens++;
-        units = 0;
-    }
-    if (tens == 10)
-        tens = 0;
+    cnt++;
+    if (cnt == 10)
+        cnt = 0;
 
-    imprimirNUM(units, display_left);
-    attachInterrupt(digitalPinToInterrupt(push_button), btnPushed, RISING);
+    printNum(cnt, display);
+    attachInterrupt(digitalPinToInterrupt(push_button), btnPushed, FALLING);
     delay(1000);
 };
