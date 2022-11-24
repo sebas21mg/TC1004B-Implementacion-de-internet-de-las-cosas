@@ -5,7 +5,7 @@
 #include "DHT.h"
 
 
-#define pin1 5      
+#define pin1 4      
 
 const char* ssid     = "Sebas' Redmi";
 const char* password = "sebas2103";
