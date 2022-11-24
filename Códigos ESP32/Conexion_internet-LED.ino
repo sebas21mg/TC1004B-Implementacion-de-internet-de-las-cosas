@@ -14,7 +14,7 @@ String header; // Variable para guardar el HTTP request
 
 String estadoSalida = "off";
 
-const int salida = 5;
+const int salida = 5; // Led en el pin 5
 
 String pagina = "<!DOCTYPE html>"
 "<html>"
