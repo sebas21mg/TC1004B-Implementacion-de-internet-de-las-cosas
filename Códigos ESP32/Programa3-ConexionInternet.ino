@@ -15,8 +15,8 @@
 const char* ssid     = "Sebas' Redmi";
 const char* password = "sebas2103";
 
-unsigned long channelID = 1952324;               
-const char* WriteAPIKey = "DNRRF4MCSGC876JS";    
+unsigned long channelID = 1954217;               
+const char* WriteAPIKey = "DH58SRQ7WJV63MWW";    
 
 WiFiClient cliente;
 
