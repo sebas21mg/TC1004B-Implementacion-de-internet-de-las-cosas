@@ -5,8 +5,8 @@
 WiFiServer server(80);
 
 
-const char* ssid     = "";
-const char* password = "";
+const char* ssid     = "Sebas' Redmi";
+const char* password = "sebas2103";
 
 int contar = 0;
 
