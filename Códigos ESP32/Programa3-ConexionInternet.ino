@@ -1,16 +1,11 @@
 //Programa 3
-
- 
-
- 
-
 #include "ThingSpeak.h"
 #include "WiFi.h"
 
 #include "DHT.h"
 
 
-#define pin1 21       
+#define pin1 5      
 
 const char* ssid     = "Sebas' Redmi";
 const char* password = "sebas2103";
