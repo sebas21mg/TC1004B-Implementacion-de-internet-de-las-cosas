@@ -12,9 +12,8 @@ DHT dht_sensor(21,DHT11);
 WiFiServer server(80);
 
 
-const char* ssid     = "";
-const char* password = "";
-
+const char* ssid     = "Sebas' Redmi";
+const char* password = "sebas2103";
 
 int contconexion = 0;
 
